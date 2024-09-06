@@ -2,9 +2,10 @@ const userRepository = require("../domain/repositories/user_repository"); // Imp
 const { createUser } = require("../domain/usecases/user_usecase"); // Import use case for creating a user
 const jwt = require("jsonwebtoken"); // Import jsonwebtoken for token generation
 const bcrypt = require("bcryptjs"); // Import bcrypt for password hashing
+const { JWT_SECRET } = require("../config/config");
 
-// Secret key for token generation
-const JWTKey = process.env.JWT_SECRET || "secret";
+// Secret key for JWT
+const JWTKey = process.env.JWT_SECRET || JWT_SECRET;
 
 // Handle request for registering a new user
 const registerUserHandler = async (req, res) => {
